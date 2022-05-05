@@ -9,11 +9,15 @@ const getWeather = (latitude, longitude, callback) => {
         }else if(body.error){
             callback('Error occured : '+ body.error.info, undefined)
         }else{
+            console.log(body)
+            console.log(body.current.humidity)
             callback(undefined,data = {
                 temperature : body.current.temperature,
                 feelsLike : body.current.feelslike,
                 location : body.location.name + ', ' + body.location.region + ', ' +
-                           body.location.country
+                           body.location.country,
+                humidity : body.current.humidity,
+                desc : body.current.weather_descriptions[0]
                 
             })
         }

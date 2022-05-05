@@ -46,14 +46,15 @@ express_app.get('/weather',(req, res) => {
         //console.log('latitude : '+ latitude)
         //console.log('longitude : '+ longitude)
         
-        weather(latitude,longitude,(error, {location,temperature,feelsLike} = {}) => {
+        weather(latitude,longitude,(error, {location,temperature,feelsLike,humidity,desc} = {}) => {
             //console.log(chalk.green.bold('Weather Results'))
             if(error)
                 return res.send({error: 'Error occured in weather : ' + error})
             res.send({
                 address: req.query.address,
                 location: location,
-                temperature: 'It is currently '+temperature+' degrees. It feels like '+feelsLike+' degrees.'
+                temperature: desc+' - It is currently '+temperature+' degrees. It feels like '+feelsLike+' degrees.',
+                humidity : 'Humidity - '+humidity
             })
             
             //console.log('Location : '+location)
