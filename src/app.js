@@ -2,6 +2,8 @@ const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 
+const port = process.env.PORT || 3000
+
 const geocode = require('./geocode')
 const weather = require('./weather')
 
@@ -79,6 +81,6 @@ express_app.get('*',(req, res) => {
     })
 })
 
-express_app.listen(3000,() => {
+express_app.listen(port,() => {
     console.log('Application started')
 })
